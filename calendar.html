@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clothes Bar Rentals — Rental Calendar</title>
+
+  <!-- Typography used by the original Clothes Bar design -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="booking-calendar">
+    <header class="calendar-header">
+      <h1>Select Your Rental Dates</h1>
+      <p class="calendar-subtext">
+        Choose your rental start and return date.<br />
+        Unavailable dates cannot be selected.
+      </p>
+      <p id="dress-title" class="dress-title" hidden></p>
+    </header>
+
+    <div id="status-message" class="status-message" role="status" aria-live="polite" hidden></div>
+
+    <div id="calendar-app" class="calendar-app" hidden>
+      <div class="calendar-wrapper">
+        <div id="calendar"></div>
+      </div>
+
+      <section id="selected-period" class="selected-period" hidden aria-live="polite">
+        <h2 class="selected-period-title">Your Rental</h2>
+
+        <div class="selected-period-grid">
+          <div class="selected-period-item">
+            <span class="selected-period-label">Start Date</span>
+            <span id="start-date-display" class="selected-period-value"></span>
+          </div>
+
+          <div class="selected-period-item">
+            <span class="selected-period-label">End Date</span>
+            <span id="end-date-display" class="selected-period-value"></span>
+          </div>
+        </div>
+
+        <div class="rental-summary">
+          <div class="rental-summary-row">
+            <span>Rental Period</span>
+            <strong id="duration-display">—</strong>
+          </div>
+
+          <div id="rental-rate-row" class="rental-summary-row rental-price-row" hidden>
+            <span>Rental Rate</span>
+            <strong id="rental-rate-display">—</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="legend" aria-label="Calendar legend">
+        <span class="legend-item"><span class="legend-swatch legend-available" aria-hidden="true"></span>Available</span>
+        <span class="legend-item"><span class="legend-swatch legend-selected" aria-hidden="true"></span>Selected</span>
+        <span class="legend-item"><span class="legend-swatch legend-unavailable" aria-hidden="true"></span>Unavailable</span>
+      </section>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13"></script>
+  <script src="script.js" defer></script>
+</body>
+</html>
