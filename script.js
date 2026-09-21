@@ -14,8 +14,8 @@
 // Supabase Row Level Security policy on `bookings` only allows
 // anonymous SELECT, and never allows anonymous INSERT, UPDATE, or
 // DELETE.
-const SUPABASE_URL = "YOUR_SUPABASE_URL";
-const SUPABASE_ANON_KEY = "YOUR_SUPABASE_ANON_KEY";
+const SUPABASE_URL = "https://iutyiqdkzhmjknclwygc.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_b11etu5irSTh5FapghWnuA_rRpwcjH-";
 
 // ============================================================================
 // Dress configuration
