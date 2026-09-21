@@ -401,3 +401,42 @@ body {
     font-size: 0.8rem;
   }
 }
+/* =========================================================
+   FIX FLATPICKR DAY / WEEKDAY ALIGNMENT
+   Each column must occupy exactly 1/7 of the calendar.
+   ========================================================= */
+
+.flatpickr-days {
+  width: 100% !important;
+}
+
+.dayContainer {
+  width: 100% !important;
+  min-width: 100% !important;
+  max-width: 100% !important;
+
+  display: flex !important;
+  flex-wrap: wrap !important;
+}
+
+.flatpickr-weekdays {
+  width: 100% !important;
+}
+
+.flatpickr-weekdaycontainer {
+  width: 100% !important;
+  display: flex !important;
+}
+
+span.flatpickr-weekday {
+  flex: 0 0 14.285714% !important;
+  width: 14.285714% !important;
+  max-width: 14.285714% !important;
+}
+
+.flatpickr-day {
+  flex: 0 0 14.285714% !important;
+  width: 14.285714% !important;
+  max-width: 14.285714% !important;
+  margin: 0 !important;
+}
