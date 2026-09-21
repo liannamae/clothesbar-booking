@@ -1046,7 +1046,15 @@ async function init() {
       "dress"
     );
 
+const continueBookingBtn =
+  document.getElementById(
+    "continue-booking-btn"
+  );
 
+continueBookingBtn.addEventListener(
+  "click",
+  goToFormester
+);
   // Missing dress parameter.
 
   if (!dressId) {
