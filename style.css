@@ -1,0 +1,523 @@
+/* ========================================================================== 
+   Clothes Bar Rentals — Rental Calendar
+   Compact styling based on the original index.html design
+   ========================================================================== */
+
+:root {
+  --cbr-bg: #ffffff;
+  --cbr-gray-bg: #f5f3f1;
+  --cbr-border: #e3deda;
+  --cbr-text: #1b1615;
+  --cbr-text-muted: #6e6663;
+  --cbr-burgundy: #7b1029;
+  --cbr-burgundy-dark: #5e0c1f;
+  --cbr-burgundy-soft: #f3e4e6;
+  --cbr-disabled: #d9d4d1;
+  --cbr-error: #a32538;
+  --cbr-error-bg: #fbeaec;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  color: var(--cbr-text);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ========================================================================== 
+   Main widget
+   ========================================================================== */
+
+.booking-calendar {
+  width: 100%;
+  max-width: 460px;
+  margin: 0 auto;
+  padding: 28px 22px 24px;
+}
+
+.calendar-app {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.calendar-app[hidden] {
+  display: none;
+}
+
+/* ========================================================================== 
+   Header
+   ========================================================================== */
+
+.calendar-header {
+  text-align: left;
+  margin-bottom: 2px;
+}
+
+.calendar-header h1 {
+  margin: 0 0 8px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 26px;
+  line-height: 1.05;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--cbr-text);
+}
+
+.calendar-subtext {
+  margin: 0;
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: var(--cbr-text-muted);
+}
+
+.dress-title {
+  margin: 12px 0 0;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cbr-burgundy);
+}
+
+.dress-title[hidden] {
+  display: none;
+}
+
+/* ========================================================================== 
+   Status / error messages
+   ========================================================================== */
+
+.status-message {
+  padding: 11px 14px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--cbr-gray-bg);
+  color: var(--cbr-text-muted);
+  font-size: 13.5px;
+  line-height: 1.5;
+  text-align: left;
+}
+
+.status-message.is-error {
+  background: var(--cbr-error-bg);
+  color: var(--cbr-error);
+}
+
+.status-message[hidden] {
+  display: none;
+}
+
+/* ========================================================================== 
+   Calendar shell
+   ========================================================================== */
+
+.calendar-wrapper {
+  width: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+/* ========================================================================== 
+   Flatpickr styling
+   ========================================================================== */
+
+.flatpickr-calendar.inline {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.flatpickr-calendar.inline .flatpickr-innerContainer,
+.flatpickr-calendar.inline .flatpickr-rContainer,
+.flatpickr-calendar.inline .dayContainer {
+  width: 100% !important;
+  min-width: 100% !important;
+  max-width: 100% !important;
+}
+
+.flatpickr-months {
+  position: relative;
+  min-height: 48px;
+  margin-bottom: 10px;
+}
+
+.flatpickr-month {
+  height: 48px;
+  color: var(--cbr-text);
+}
+
+.flatpickr-current-month {
+  top: 10px;
+  height: auto;
+  padding: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--cbr-text);
+}
+
+.flatpickr-current-month .flatpickr-monthDropdown-months,
+.flatpickr-current-month input.cur-year {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--cbr-text);
+}
+
+.flatpickr-current-month .flatpickr-monthDropdown-months {
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: 6px;
+}
+
+.flatpickr-prev-month,
+.flatpickr-next-month {
+  top: 6px;
+  width: 36px;
+  height: 36px;
+  padding: 8px;
+  color: var(--cbr-text);
+  fill: var(--cbr-text);
+  border-radius: 10px;
+  transition: background-color 0.15s ease;
+}
+
+.flatpickr-prev-month:hover,
+.flatpickr-next-month:hover {
+  background: var(--cbr-gray-bg);
+}
+
+.flatpickr-prev-month:hover svg,
+.flatpickr-next-month:hover svg {
+  fill: var(--cbr-burgundy);
+}
+
+/* Exact seven-column alignment for weekday headers and dates. */
+.flatpickr-weekdays,
+.flatpickr-weekdaycontainer,
+.flatpickr-days,
+.flatpickr-rContainer,
+.dayContainer {
+  width: 100% !important;
+  min-width: 100% !important;
+  max-width: 100% !important;
+}
+
+.flatpickr-weekdays {
+  height: 36px;
+  margin-bottom: 4px;
+  background: transparent;
+}
+
+.flatpickr-weekdaycontainer {
+  display: flex !important;
+}
+
+span.flatpickr-weekday {
+  flex: 0 0 14.285714% !important;
+  width: 14.285714% !important;
+  max-width: 14.285714% !important;
+  text-align: center !important;
+  background: transparent;
+  color: var(--cbr-text-muted);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.flatpickr-days {
+  border: 0;
+}
+
+.dayContainer {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  padding: 0;
+}
+
+.flatpickr-day {
+  flex: 0 0 14.285714% !important;
+  width: 14.285714% !important;
+  max-width: 14.285714% !important;
+  height: 42px;
+  line-height: 42px;
+  margin: 0 !important;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  color: var(--cbr-text);
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center !important;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.flatpickr-day:hover,
+.flatpickr-day:focus {
+  background: var(--cbr-gray-bg);
+  border-color: var(--cbr-gray-bg);
+}
+
+.flatpickr-day.prevMonthDay,
+.flatpickr-day.nextMonthDay {
+  color: #d8d3ce;
+}
+
+/* Today: burgundy outline only. */
+.flatpickr-day.today {
+  border-color: var(--cbr-burgundy);
+  color: var(--cbr-text);
+  background: #fff;
+}
+
+.flatpickr-day.today:hover,
+.flatpickr-day.today:focus {
+  background: var(--cbr-gray-bg);
+  border-color: var(--cbr-burgundy);
+}
+
+/* Range endpoints */
+.flatpickr-day.selected,
+.flatpickr-day.startRange,
+.flatpickr-day.endRange,
+.flatpickr-day.selected:hover,
+.flatpickr-day.startRange:hover,
+.flatpickr-day.endRange:hover,
+.flatpickr-day.selected:focus,
+.flatpickr-day.startRange:focus,
+.flatpickr-day.endRange:focus {
+  background: var(--cbr-burgundy);
+  border-color: var(--cbr-burgundy);
+  color: #fff;
+  box-shadow: none;
+}
+
+/* Interior of selected range */
+.flatpickr-day.inRange {
+  background: var(--cbr-burgundy-soft);
+  border-color: var(--cbr-burgundy-soft);
+  color: var(--cbr-text);
+  box-shadow: -5px 0 0 var(--cbr-burgundy-soft), 5px 0 0 var(--cbr-burgundy-soft);
+  border-radius: 0;
+}
+
+.flatpickr-day.startRange {
+  border-radius: 10px 0 0 10px;
+}
+
+.flatpickr-day.endRange {
+  border-radius: 0 10px 10px 0;
+}
+
+.flatpickr-day.startRange.endRange {
+  border-radius: 10px;
+}
+
+/* Disabled / booked / past */
+.flatpickr-day.disabled,
+.flatpickr-day.disabled:hover,
+.flatpickr-day.notAllowed,
+.flatpickr-day.notAllowed:hover {
+  background: transparent;
+  border-color: transparent;
+  color: #d8d3ce;
+  cursor: not-allowed;
+  text-decoration: none;
+}
+
+/* ========================================================================== 
+   Selected rental card
+   ========================================================================== */
+
+.selected-period {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 18px 20px;
+  margin: 0;
+  border: 0;
+  border-radius: 14px;
+  background: var(--cbr-gray-bg);
+}
+
+.selected-period[hidden] {
+  display: none;
+}
+
+.selected-period-title {
+  margin: 0;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--cbr-burgundy);
+}
+
+.selected-period-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.selected-period-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  padding: 6px 0;
+}
+
+.selected-period-label {
+  font-size: 14.5px;
+  line-height: 1.4;
+  color: var(--cbr-text-muted);
+}
+
+.selected-period-value {
+  font-size: 14.5px;
+  line-height: 1.4;
+  font-weight: 600;
+  text-align: right;
+  color: var(--cbr-text);
+}
+
+.rental-summary {
+  margin-top: 2px;
+  padding-top: 12px;
+  border-top: 1px solid var(--cbr-border);
+}
+
+.rental-summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  padding: 5px 0;
+  font-size: 14.5px;
+}
+
+.rental-summary-row span {
+  color: var(--cbr-text-muted);
+}
+
+.rental-summary-row strong {
+  color: var(--cbr-text);
+  font-size: 14.5px;
+  font-weight: 600;
+  text-align: right;
+}
+
+.rental-price-row {
+  margin-top: 2px;
+}
+
+.rental-price-row[hidden] {
+  display: none;
+}
+
+.rental-price-row strong {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 23px;
+  line-height: 1;
+  font-weight: 600;
+  color: var(--cbr-burgundy);
+}
+
+/* ========================================================================== 
+   Legend
+   ========================================================================== */
+
+.legend {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: -2px;
+  font-size: 12px;
+  color: var(--cbr-text-muted);
+}
+
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legend-swatch {
+  display: inline-block;
+  width: 11px;
+  height: 11px;
+  border-radius: 3px;
+  border: 1px solid var(--cbr-border);
+}
+
+.legend-available {
+  background: #fff;
+}
+
+.legend-selected {
+  background: var(--cbr-burgundy);
+  border-color: var(--cbr-burgundy);
+}
+
+.legend-unavailable {
+  background: #eeeae7;
+  border-color: #eeeae7;
+}
+
+/* ========================================================================== 
+   Focus / accessibility
+   ========================================================================== */
+
+.flatpickr-day:focus-visible,
+.flatpickr-prev-month:focus-visible,
+.flatpickr-next-month:focus-visible {
+  outline: 2px solid var(--cbr-burgundy);
+  outline-offset: 2px;
+}
+
+/* ========================================================================== 
+   Mobile
+   ========================================================================== */
+
+@media (max-width: 380px) {
+  .booking-calendar {
+    padding: 22px 16px 20px;
+  }
+
+  .calendar-header h1 {
+    font-size: 22px;
+  }
+
+  .flatpickr-day {
+    height: 38px;
+    line-height: 38px;
+    font-size: 13px;
+  }
+
+  .selected-period-item,
+  .rental-summary-row {
+    align-items: flex-start;
+  }
+}
